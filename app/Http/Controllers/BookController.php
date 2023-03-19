@@ -51,7 +51,12 @@ class BookController extends Controller
         $book->title = $request->input('title');
         $book->content = $request->input('content');
         $book->save();
-        return redirect()->route('books.show', $book)->with('flash_message', '投稿を編集しました');
+        return redirect()->route('books.show', $book)->with('flash_message', '編集に成功しました');
+    }
+
+    public function destroy(Book $book) {
+        $book->delete();
+        return redirect()->route('books.index')->with('flash_message', '本を削除しました');
     }
 
 }

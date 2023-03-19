@@ -14,6 +14,11 @@
         <h2>{{ $book->title }}</h2>
         <p>{{ $book->content }}</p>
         <a href="{{ route('books.edit', $book) }}">編集</a>
+        <form action="{{ route('books.destroy', $book) }}" method="post">
+          @csrf
+          @method('delete')
+          <button type="submit">削除</button>
+        </form>
       </div>
     </div>
   </div>
