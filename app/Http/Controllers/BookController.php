@@ -42,4 +42,16 @@ class BookController extends Controller
         // with()メソッドは以下のように第1引数にキー、第2引数に値を指定することで、セッションにそのデータを保存、ビューで使用
         return redirect()->route('books.index')->with('flash_message', '投稿が完了しました');
     }
+
+    public function edit(Book $book) {
+        return view('books.edit', compact('book'));
+    }
+
+    public function update(Request $request, Book $book) {
+        $book->title = $request->input('title');
+        $book->content = $request->input('content');
+        $book->save();
+        return redirect()->route('books.show', $book)->with('flash_message', '投稿を編集しました');
+    }
+
 }
