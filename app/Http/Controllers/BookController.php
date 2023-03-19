@@ -11,7 +11,16 @@ class BookController extends Controller
 {
     //indexページの表示
     public function index() {
-        return view('books.index');
+        // @books = Book.all
+        $books = Book::all();
+        //@books = Book.order(created_at ASC)
+        // $books = Book::latest()->get();
+        // compact()関数＝引数に渡された変数とその値から配列を作成し、戻り値として返す関数
+        return view('books.index', compact('books'));
+    }
+
+    public function show(Book $book) {
+        return view('books.show', compact('book'));
     }
 
     //createページの表示
