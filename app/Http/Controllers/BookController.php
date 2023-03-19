@@ -30,6 +30,11 @@ class BookController extends Controller
 
     //保存
     public function store(Request $request) {
+        //バリデーションの設定
+        $request->validate([
+            'title' => 'required',
+            'content' => 'required',
+        ]);
         // @book = Book.new
         $book = new Book();
         // @book.title = params[:book][:title]
@@ -48,6 +53,10 @@ class BookController extends Controller
     }
 
     public function update(Request $request, Book $book) {
+        $request->validate([
+            'title' => 'required',
+            'content' => 'required',
+        ]);
         $book->title = $request->input('title');
         $book->content = $request->input('content');
         $book->save();
