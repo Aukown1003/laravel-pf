@@ -23,10 +23,12 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">Laravelやで！</a>
-                {{-- <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a> --}}
+                @if(Auth::check())
+                    <a class="navbar-brand" href="{{ url('/books') }}">Laravel-Pf</a>
+                @else
+                    <a class="navbar-brand" href="{{ url('/') }}">Laravel-Pf</a>
+                @endif
+                {{-- <a class="navbar-brand" href="{{ url('/') }}">Laravel-Pf</a> --}}
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -62,7 +64,7 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('ログアウト') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -76,7 +78,23 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="pb-4">
+            <div class="flash-group mb-4">
+                @if (session('flash_message'))
+                    <div class="alert alert-success">
+                        <li>{{ session('flash_message') }}</li>
+                    </div>
+                @endif
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul class="mb-0">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                        </ul>
+                    </div>
+                @endif
+            </div>
             @yield('content')
         </main>
     </div>

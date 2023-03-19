@@ -4,31 +4,22 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6">
-      @if ($errors->any())
-          <div>
-            <ul>
-              @foreach ($errors->all() as $error)
-                  <li>{{ $error }}</li>
-              @endforeach
-            </ul>
-          </div>
-      @endif
       <h1>新規投稿</h1>
-      <div>
-        <a href="{{ route('books.index') }}">戻る</a>
-      </div>
       <form action="{{ route('books.store') }}" method="POST">
         {{-- @csrf = サイバー攻撃からアプリを保護するためのコード、必ず記述 --}}
         @csrf
-        <div>
+        <div class="form-group mb-3">
           <label for="title">タイトル</label>
-          <input type="text" name="title" value="{{ old('title') }}">
+          <input type="text" class="form-control" name="title" value="{{ old('title') }}">
+        </div>
+        <div class="form-group mb-3">
+          <label for="context" name="context">紹介文</label>
+          <textarea class="form-control" name="content">{{ old('content') }}</textarea>
         </div>
         <div>
-          <label for="context" name="context">紹介文</label>
-          <textarea name="content">{{ old('content') }}</textarea>
+          <button type="submit" class="btn btn-outline-primary">投稿</button>
+          <a href="{{ route('books.index') }}" class="btn btn-outline-secondary">戻る</a>
         </div>
-        <button type="submit">投稿</button>
       </form>
     </div>
   </div>

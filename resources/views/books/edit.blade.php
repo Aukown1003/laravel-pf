@@ -5,8 +5,8 @@
   <div class="row">
     <div class="col-md-6">
       @if ($errors->any())
-          <div>
-            <ul>
+          <div class="alert alert-danger">
+            <ul class="mb-0">
               @foreach ($errors->all() as $error)
                   <li>{{ $error }}</li>
               @endforeach

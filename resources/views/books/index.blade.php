@@ -4,28 +4,39 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6">
+      <h1>プロフィールその他を入れる</h1>
+    </div>
+    <div class="col-md-6">
       <h1>投稿一覧</h1>
-      @if (session('flash_message'))
-        <p>{{ session('flash_message') }}</p>
-      @endif
-      <div>
-        <a href="{{ route('books.create') }}">新規投稿</a>
-      </div>
-      <div>
-        @foreach($books as $book)
-          <div>
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Content</th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach($books as $book)
+            <tr>
               {{-- <a href="{{ route('books.show', $book) }}"><h2>{{ $book->title }}</h2></a> --}}
-              <h2>{{ $book->title }}</h2>
-              <p>{{ $book->content }}</p>
-              <a href="{{ route('books.show', $book) }}">詳細</a>
-              <a href="{{ route('books.edit', $book) }}">編集</a>
+              <td>{{ $book->title }}</td>
+              <td>{{ $book->content }}</td>
+              <td ><a href="{{ route('books.show', $book) }}" class="btn btn-primary">詳細</a></td>
+              <td><a href="{{ route('books.edit', $book) }}" class="btn btn-success">編集</a></td>
               <form action="{{ route('books.destroy', $book) }}" method="post">
                 @csrf
                 @method('delete')
-                <button type="submit">削除</button>
+                <td><button type="submit" class="btn btn-danger">削除</button></td>
               </form>
-          </div>
-        @endforeach
+            </tr>
+          @endforeach
+        </tbody>
+      </table>
+      <div>
+        <a href="{{ route('books.create') }}">新規投稿</a>
       </div>
     </div>
   </div>
