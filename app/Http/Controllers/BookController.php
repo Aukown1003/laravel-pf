@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
  // やりとりするモデルを宣言する
 use App\Models\Book;
+use Illuminate\Support\Facades\Storage;
 
 class BookController extends Controller
 {
@@ -41,6 +42,10 @@ class BookController extends Controller
         $book->title = $request->input('title');
         //@book.content = params[:book][:content]
         $book->content = $request->input('content');
+        $image = $request->file('image');
+        $path = Storage::disk('s3')->putFile('image', $image, 'public');
+        $book->image = Storage::disk('s3')->url($path);
+
         //@book.save
         $book->save();
         //redirect_to books_path

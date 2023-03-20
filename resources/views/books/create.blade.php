@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col-md-6">
       <h1>新規投稿</h1>
-      <form action="{{ route('books.store') }}" method="POST">
+      <form action="{{ route('books.store') }}" method="POST" enctype="multipart/form-data">
         {{-- @csrf = サイバー攻撃からアプリを保護するためのコード、必ず記述 --}}
         @csrf
         <div class="form-group mb-3">
@@ -15,6 +15,10 @@
         <div class="form-group mb-3">
           <label for="context" name="context">紹介文</label>
           <textarea class="form-control" name="content">{{ old('content') }}</textarea>
+        </div>
+        <div class="form-group mb-3">
+          <label for="context" name="context">画像</label>
+          <input type="file" name="image">
         </div>
         <div>
           <button type="submit" class="btn btn-outline-primary">投稿</button>

@@ -22,6 +22,7 @@
           @foreach($books as $book)
             <tr>
               {{-- <a href="{{ route('books.show', $book) }}"><h2>{{ $book->title }}</h2></a> --}}
+              <td><img src="{{ $book->image }}"></td>
               <td>{{ $book->title }}</td>
               <td>{{ $book->content }}</td>
               <td ><a href="{{ route('books.show', $book) }}" class="btn btn-primary">詳細</a></td>
