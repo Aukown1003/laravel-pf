@@ -42,6 +42,7 @@ class BookController extends Controller
         $book->title = $request->input('title');
         //@book.content = params[:book][:content]
         $book->content = $request->input('content');
+        // s3の設定
         $image = $request->file('image');
         $path = Storage::disk('s3')->putFile('image', $image, 'public');
         $book->image = Storage::disk('s3')->url($path);
