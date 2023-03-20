@@ -11,13 +11,19 @@ use Illuminate\Support\Facades\Storage;
 class BookController extends Controller
 {
     //indexページの表示
-    public function index() {
+    public function index(Request $request) {
         // @books = Book.all
         $books = Book::all();
+        $search = $request->input('search');
+
+        if ($search) {
+            $books = Book::where('title', 'LIKE', '%'.$search.'%')->get();
+        }
         //@books = Book.order(created_at ASC)
         // $books = Book::latest()->get();
         // compact()関数＝引数に渡された変数とその値から配列を作成し、戻り値として返す関数
-        return view('books.index', compact('books'));
+        // return view('books.index', compact('books'));
+        return view('books.index')->with(['books' => $books,'search' => $search]);
     }
 
     public function show(Book $book) {

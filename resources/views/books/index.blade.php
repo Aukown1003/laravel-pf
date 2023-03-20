@@ -5,9 +5,19 @@
   <div class="row">
     <div class="col-md-3">
       <h1>プロフィールその他を入れる</h1>
+      
     </div>
     <div class="col-md-9">
       <h1>投稿一覧</h1>
+
+      {{-- 検索フォーム --}}
+      <form action="{{ route('books.index') }}" method="get">
+        <div class="d-flex">
+          <input type="search" placeholder="タイトルを入力" name="search" value="@if (isset($search)) {{ $search }} @endif">
+          <button type="submit" class="btn btn-secondary">検索</button>
+        </div>
+      </form>
+
       <table class="table table-hover table-inverse">
         <thead>
           <tr>
