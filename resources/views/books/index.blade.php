@@ -4,8 +4,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-      <h1>プロフィールその他を入れる</h1>
-      
+      @include('users.user')
     </div>
     <div class="col-md-9">
       <h1>投稿一覧</h1>
@@ -46,9 +45,6 @@
           @endforeach
         </tbody>
       </table>
-      <div>
-        <a href="{{ route('books.create') }}">新規投稿</a>
-      </div>
     </div>
   </div>
 </div>

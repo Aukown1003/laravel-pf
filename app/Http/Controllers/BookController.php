@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
  // やりとりするモデルを宣言する
 use App\Models\Book;
 use Illuminate\Support\Facades\Storage;
+use Auth;
 
 class BookController extends Controller
 {
@@ -19,11 +20,12 @@ class BookController extends Controller
         if ($search) {
             $books = Book::where('title', 'LIKE', '%'.$search.'%')->get();
         }
+        $user = Auth::user();
         //@books = Book.order(created_at ASC)
         // $books = Book::latest()->get();
         // compact()関数＝引数に渡された変数とその値から配列を作成し、戻り値として返す関数
         // return view('books.index', compact('books'));
-        return view('books.index')->with(['books' => $books,'search' => $search]);
+        return view('books.index')->with(['books' => $books,'search' => $search, 'user' => $user]);
     }
 
     public function show(Book $book) {
