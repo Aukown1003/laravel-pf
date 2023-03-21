@@ -1,3 +1,14 @@
+.book-image-width {
+  width: 150px;
+}
+
 .books_image {
-  max-width: 100px;
+    max-width: 100px;
+}
+
+.user_profile {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
 }

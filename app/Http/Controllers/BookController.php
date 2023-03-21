@@ -15,6 +15,7 @@ class BookController extends Controller
     public function index(Request $request) {
         // @books = Book.all
         $books = Book::all();
+        // $books = Book::with('user')->get();
         $search = $request->input('search');
 
         if ($search) {
@@ -50,11 +51,13 @@ class BookController extends Controller
         $book->title = $request->input('title');
         //@book.content = params[:book][:content]
         $book->content = $request->input('content');
+        $book->user_id = Auth::id();
         // s3の設定
         $image = $request->file('image');
-        $path = Storage::disk('s3')->putFile('image', $image, 'public');
-        $book->image = Storage::disk('s3')->url($path);
-
+        if ($image) {
+            $path = Storage::disk('s3')->putFile('image', $image, 'public');
+            $book->image = Storage::disk('s3')->url($path);
+        }
         //@book.save
         $book->save();
         //redirect_to books_path
