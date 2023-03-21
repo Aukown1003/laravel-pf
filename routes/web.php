@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 // ルーティングを設定するコントローラを宣言する
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,6 +23,10 @@ Auth::routes();
 Route::middleware(['auth'])->group(function () {
     // ここにログインが必要なルートを定義
     Route::resource('books', BookController::class);
+    // Route::get('users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
+    Route::resource('users', UserController::class)->only([
+        'edit', 'update'
+    ]);
 });
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::get('/books', [BookController::class, 'index'])->name('books.index');

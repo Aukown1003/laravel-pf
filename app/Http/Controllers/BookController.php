@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
  // やりとりするモデルを宣言する
 use App\Models\Book;
+//画像等のストレージの宣言
 use Illuminate\Support\Facades\Storage;
 use Auth;
 

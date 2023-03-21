@@ -53,6 +53,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            // 'profile_image' => ['image'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -65,9 +66,15 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        // $image = $request->file('image');
+        // if ($image) {
+        //     $path = Storage::disk('s3')->putFile('user_image', $image, 'public');
+        //     $profile_image = Storage::disk('s3')->url($path);
+        // }
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            // 'profile_image' => $data['profile_image'],
             'password' => Hash::make($data['password']),
         ]);
     }

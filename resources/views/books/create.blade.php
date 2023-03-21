@@ -12,7 +12,7 @@
     <textarea class="form-control" name="content">{{ old('content') }}</textarea>
   </div>
   <div class="form-group mb-3">
-    <label for="context" name="context">画像</label>
+    <label for="image" name="image">画像</label>
     <input type="file" name="image">
   </div>
   <div>
