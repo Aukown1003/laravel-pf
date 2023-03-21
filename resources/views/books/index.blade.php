@@ -48,7 +48,7 @@
               <form action="{{ route('books.destroy', $book) }}" method="post">
                 @csrf
                 @method('delete')
-                <td class="align-middle"><button type="submit" class="btn btn-danger">削除</button></td>
+                <td class="align-middle"><button type="submit" class="btn btn-danger" onclick="delete_alert(event);return false;">削除</button></td>
               </form>
             </tr>
           @endforeach
@@ -57,4 +57,16 @@
     </div>
   </div>
 </div>
+@endsection
+
+@section('script')
+<script>
+  function delete_alert(e) {
+    if(!window.confirm('本当に削除しますか？')){
+      window.alert('キャンセルされました');
+      return false;
+    }
+    document.deleteform.submit();
+}
+</script>
 @endsection
