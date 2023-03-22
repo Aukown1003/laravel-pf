@@ -79,6 +79,11 @@ class BookController extends Controller
         ]);
         $book->title = $request->input('title');
         $book->content = $request->input('content');
+        $image = $request->file('image');
+        if ($image) {
+            $path = Storage::disk('s3')->putFile('image', $image, 'public');
+            $book->image = Storage::disk('s3')->url($path);
+        }
         $book->save();
         return redirect()->route('books.show', $book)->with('flash_message', '編集に成功しました');
     }

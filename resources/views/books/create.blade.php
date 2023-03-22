@@ -16,7 +16,7 @@
 
   <div class="form-group mb-3">
     <label for="image" name="image">画像</label>
-    <input type="file" name="image">
+    <input type="file" class="form-control" name="image">
   </div>
 
   <div>
