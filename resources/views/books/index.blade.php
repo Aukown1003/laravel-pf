@@ -32,7 +32,6 @@
         <tbody>
           @foreach($books as $book)
             <tr>
-              {{-- <a href="{{ route('books.show', $book) }}"><h2>{{ $book->title }}</h2></a> --}}
               <td class="text-center">
                 @if ($book->image)
                   <img src="{{ $book->image }}" class="books_image">
@@ -42,14 +41,15 @@
               </td>
               <td class="align-middle">{{ $book->title }}</td>
               <td class="align-middle">{{ $book->user->name }}</td>
-              {{-- <td class="align-middle">{{ $book->content }}</td> --}}
               <td class="align-middle"><a href="{{ route('books.show', $book) }}" class="btn btn-primary">詳細</a></td>
-              <td class="align-middle"><a href="{{ route('books.edit', $book) }}" class="btn btn-success">編集</a></td>
-              <form action="{{ route('books.destroy', $book) }}" method="post">
-                @csrf
-                @method('delete')
-                <td class="align-middle"><button type="submit" class="btn btn-danger" onclick="delete_alert(event);return false;">削除</button></td>
-              </form>
+              @if (Auth::id() == $book->user->id)
+                <td class="align-middle"><a href="{{ route('books.edit', $book) }}" class="btn btn-success">編集</a></td>
+                <form action="{{ route('books.destroy', $book) }}" method="post">
+                  @csrf
+                  @method('delete')
+                  <td class="align-middle"><button type="submit" class="btn btn-danger" onclick="delete_alert(event);return false;">削除</button></td>
+                </form>
+              @endif
             </tr>
           @endforeach
         </tbody>
