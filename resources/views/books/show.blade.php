@@ -3,10 +3,12 @@
 @section('content')
 <div class="container">
   <div class="row">
+
     <div class="col-md-3 mb-4 mb-md-0">
       @include('users.user')
       @include('books.create')
     </div>
+
     <div class="col-md-9">
       <div class="card">
         <div class="card-header text-center">
@@ -43,6 +45,7 @@
             <div class="me-1">
               <a href="{{ route('books.edit', $book) }}" class="btn btn-success">編集</a>
             </div>
+
             <div class="ms-1">
               <form action="{{ route('books.destroy', $book) }}" method="post">
                 @csrf
@@ -50,6 +53,7 @@
                 <button type="submit" class="btn btn-danger" onclick="delete_alert(event);return false;">削除</button>
               </form>
             </div>
+
           </div>
         </div>
       </div>

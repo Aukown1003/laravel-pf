@@ -3,10 +3,12 @@
 @section('content')
 <div class="container">
   <div class="row">
+
     <div class="col-md-3">
       @include('users.user')
       @include('books.create')
     </div>
+
     <div class="col-md-9 text-center">
       <h2>投稿一覧</h2>
 
@@ -29,6 +31,7 @@
             <th></th>
           </tr>
         </thead>
+
         <tbody>
           @foreach($books as $book)
             <tr>
@@ -39,9 +42,13 @@
                   <img src="{{ asset('img/no_image.png') }}" class="books_image">
                 @endif
               </td>
+
               <td class="align-middle">{{ $book->title }}</td>
+
               <td class="align-middle">{{ $book->user->name }}</td>
+
               <td class="align-middle"><a href="{{ route('books.show', $book) }}" class="btn btn-primary">詳細</a></td>
+
               @if (Auth::id() == $book->user->id)
                 <td class="align-middle"><a href="{{ route('books.edit', $book) }}" class="btn btn-success">編集</a></td>
                 <form action="{{ route('books.destroy', $book) }}" method="post">
@@ -50,9 +57,11 @@
                   <td class="align-middle"><button type="submit" class="btn btn-danger" onclick="delete_alert(event);return false;">削除</button></td>
                 </form>
               @endif
+
             </tr>
           @endforeach
         </tbody>
+
       </table>
     </div>
   </div>

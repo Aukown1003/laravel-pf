@@ -14,10 +14,12 @@ class UserController extends Controller
     }
 
     public function update(Request $request, User $user) {
+
         $request->validate([
             'name' => 'required',
             'email' => 'required',
         ]);
+
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $image = $request->file('profile_image');

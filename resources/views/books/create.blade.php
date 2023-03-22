@@ -1,7 +1,6 @@
 
 <h2 class="text-center">新規投稿</h2>
 <form action="{{ route('books.store') }}" method="POST" enctype="multipart/form-data">
-  {{-- @csrf = サイバー攻撃からアプリを保護するためのコード、必ず記述 --}}
   @csrf
 
   <div class="form-group mb-3">
