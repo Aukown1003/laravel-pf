@@ -6,6 +6,10 @@
     max-width: 100px;
 }
 
+.book_image_detail {
+  max-width: 200px;
+}
+
 .user_profile {
     width: 100px;
     height: 100px;

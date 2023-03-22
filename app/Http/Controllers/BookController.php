@@ -31,7 +31,9 @@ class BookController extends Controller
     }
 
     public function show(Book $book) {
-        return view('books.show', compact('book'));
+        // @user = current_user
+        $user = Auth::user();
+        return view('books.show')->with(['book' => $book, 'user' => $user]);
     }
 
     //createページの表示
