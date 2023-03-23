@@ -56,6 +56,9 @@
                   @method('delete')
                   <td class="align-middle"><button type="submit" class="btn btn-danger" onclick="delete_alert(event);return false;">削除</button></td>
                 </form>
+              @else
+                <td></td>
+                <td></td>
               @endif
 
             </tr>

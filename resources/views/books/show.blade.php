@@ -41,27 +41,27 @@
             </div>
           </div>
 
-          <div class="d-flex">
-            <div class="me-1">
-              <a href="{{ route('books.edit', $book) }}" class="btn btn-success">編集</a>
+          @if (Auth::id() == $book->user->id)
+            <div class="d-flex">
+              <div class="me-1">
+                <a href="{{ route('books.edit', $book) }}" class="btn btn-success">編集</a>
+              </div>
+
+              <div class="ms-1">
+                <form action="{{ route('books.destroy', $book) }}" method="post">
+                  @csrf
+                  @method('delete')
+                  <button type="submit" class="btn btn-danger" onclick="delete_alert(event);return false;">削除</button>
+                </form>
+              </div>
             </div>
 
-            <div class="ms-1">
-              <form action="{{ route('books.destroy', $book) }}" method="post">
-                @csrf
-                @method('delete')
-                <button type="submit" class="btn btn-danger" onclick="delete_alert(event);return false;">削除</button>
-              </form>
-            </div>
-
-          </div>
         </div>
       </div>
 
       <div class="mt-3">
         <a href="{{ route('books.index') }}" class="btn btn-primary w-100">一覧に戻る</a>
       </div>
-
     </div>
   </div>
 </div>
