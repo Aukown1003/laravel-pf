@@ -1,4 +1,3 @@
-
 <h2 class="text-center">新規投稿</h2>
 <form action="{{ route('books.store') }}" method="POST" enctype="multipart/form-data">
   @csrf
@@ -22,4 +21,3 @@
     <button type="submit" class="btn btn-outline-primary w-100">投稿</button>
   </div>
 </form>
-
