@@ -22,15 +22,12 @@ class BookController extends Controller
         if ($search) {
             $books = Book::where('title', 'LIKE', '%'.$search.'%')->get();
         }
-        // @user = current_user
-        $user = Auth::user();
 
-        return view('books.index')->with(['books' => $books,'search' => $search, 'user' => $user]);
+        return view('books.index', compact('books','search'));
     }
 
     public function show(Book $book) {
-        $user = Auth::user();
-        return view('books.show')->with(['book' => $book, 'user' => $user]);
+        return view('books.show', compact('book'));
     }
 
     //createページの表示

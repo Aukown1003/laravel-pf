@@ -5,7 +5,7 @@
   <div class="row">
 
     <div class="col-md-3 mb-4 mb-md-0">
-      @include('users.user')
+      @include('users.user', ['user' => Auth::user()])
       @include('books.create')
     </div>
 

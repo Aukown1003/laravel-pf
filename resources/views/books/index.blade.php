@@ -5,7 +5,7 @@
   <div class="row">
 
     <div class="col-md-3">
-      @include('users.user')
+      @include('users.user', ['user' => Auth::user()])
       @include('books.create')
     </div>
 
@@ -61,7 +61,6 @@
             </tr>
           @endforeach
         </tbody>
-
       </table>
     </div>
   </div>
