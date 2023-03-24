@@ -22,7 +22,10 @@ class BookController extends Controller
         $search = $request->input('search');
 
         if ($search) {
-            $books = Book::where('title', 'LIKE', '%'.$search.'%')->get();
+            // $books = Book::where('title', 'LIKE', '%'.$search.'%')->get();
+            $books = Book::where('title', 'LIKE', "%{$search}%")
+            ->orWhereHas('user', function ($query) use ($search) {$query->where('name', 'LIKE', "%{$search}%");})
+            ->get();
         }
 
         return view('books.index', compact('books','search'));
@@ -41,11 +44,13 @@ class BookController extends Controller
     public function store(StoreBookRequest $request) {
         //バリデーションの設定
         $validated = $request->validated();
+
+        //基本のバリデーション
         // $request->validate([
             // 'title' => 'required',
             // 'content' => 'required',
         // ]);
-        
+
         // @book = Book.new
         $book = new Book();
         // @book.title = params[:book][:title]

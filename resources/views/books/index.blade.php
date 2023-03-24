@@ -15,7 +15,7 @@
       {{-- 検索フォーム --}}
       <form action="{{ route('books.index') }}" method="get">
         <div class="d-flex justify-content-center mb-3">
-          <input type="search" placeholder="タイトルを入力" name="search" value="@if (isset($search)) {{ $search }} @endif">
+          <input type="search" placeholder="タイトルもしくはユーザー名入力" name="search" value="@if (isset($search)) {{ $search }} @endif" class="w-50">
           <button type="submit" class="btn btn-secondary">検索</button>
         </div>
       </form>

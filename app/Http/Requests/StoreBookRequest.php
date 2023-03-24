@@ -32,10 +32,11 @@ class StoreBookRequest extends FormRequest
         ];
     }
 
+    //エラー時のカラム名を変更したい場合の設定
     public function attributes()
     {
         return [
-            'title' => 'タイトルう',
+            'title' => 'タイトル',
             'content' => '紹介文',
         ];
     }
