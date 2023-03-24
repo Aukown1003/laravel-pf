@@ -9,6 +9,8 @@ use App\Models\Book;
 //画像等のストレージの宣言
 use Illuminate\Support\Facades\Storage;
 use Auth;
+//カスタムバリデーションの使用宣言
+use App\Http\Requests\StoreBookRequest;
 
 class BookController extends Controller
 {
@@ -36,12 +38,14 @@ class BookController extends Controller
     }
 
     //保存
-    public function store(Request $request) {
+    public function store(StoreBookRequest $request) {
         //バリデーションの設定
-        $request->validate([
-            'title' => 'required',
-            'content' => 'required',
-        ]);
+        $validated = $request->validated();
+        // $request->validate([
+            // 'title' => 'required',
+            // 'content' => 'required',
+        // ]);
+        
         // @book = Book.new
         $book = new Book();
         // @book.title = params[:book][:title]
