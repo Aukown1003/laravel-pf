@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Storage;
 use Auth;
 //カスタムバリデーションの使用宣言
 use App\Http\Requests\StoreBookRequest;
+use App\Jobs\BookStore;
 
 class BookController extends Controller
 {
@@ -39,6 +40,22 @@ class BookController extends Controller
     public function create() {
         return view('books.create');
     }
+
+    // public function store(StoreBookRequest $request) {
+    //     $validated = $request->validated();
+    //     $title = $request->input('title');
+    //     $content = $request->input('content');
+    //     $user_id = Auth::id();
+    //     $image_file = $request->file('image');
+    //     if ($image_file) {
+    //         $path = Storage::disk('s3')->putFile('image', $image, 'public');
+    //         $image = Storage::disk('s3')->url($path);
+    //     } else {
+    //         $image = null;
+    //     }
+    //     dispatch(new BookStore($title, $content, $user_id, $image));
+    //     return response()->json(['message' => '保存しました']);
+    // }
 
     //保存
     public function store(StoreBookRequest $request) {

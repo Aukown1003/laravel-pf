@@ -18,6 +18,6 @@
   </div>
 
   <div>
-    <button type="submit" class="btn btn-outline-primary w-100">投稿</button>
+    <button type="submit" id="submit-button" class="btn btn-outline-primary w-100">投稿</button>
   </div>
 </form>

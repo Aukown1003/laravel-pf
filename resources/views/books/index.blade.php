@@ -78,6 +78,31 @@
       return false;
     }
     document.deleteform.submit();
-}
+  }
+
+  // $('#submit-button').click(function() {
+  //     var title = $('#title').val();
+  //     var content = $('#content').val();
+  //     var image = $('#image').val();
+
+  //     $.ajax({
+  //         url: '{{ route('books.store') }}',
+  //         type: 'POST',
+  //         data: {
+  //             '_token': '{{ csrf_token() }}',
+  //             'title': title,
+  //             'content': content,
+  //             'image': image
+  //         },
+  //         dataType: 'json',
+  //         success: function (response) {
+  //             alert(response.message);
+  //         },
+  //         error: function (xhr, status, error) {
+  //             console.log(xhr.responseText);
+  //         }
+  //     });
+  // });
+
 </script>
 @endsection
