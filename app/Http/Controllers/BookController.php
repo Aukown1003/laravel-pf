@@ -41,6 +41,11 @@ class BookController extends Controller
         return view('books.create');
     }
 
+    public function getData() {
+        $books = Book::orderBy('created_at', 'DESC')->get();
+        $json = ["books" => $books];
+        return response()->json($json);
+    }
     // public function store(StoreBookRequest $request) {
     //     $validated = $request->validated();
     //     $title = $request->input('title');
