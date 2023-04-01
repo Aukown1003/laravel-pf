@@ -25,5 +25,6 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('users', UserController::class)->only([
         'edit', 'update'
     ]);
+    // jsonでデータを取得するルーティング
     Route::get('/result/ajax', [BookController::class, 'getData']);
 });

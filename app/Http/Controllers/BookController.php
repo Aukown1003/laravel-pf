@@ -41,6 +41,7 @@ class BookController extends Controller
         return view('books.create');
     }
 
+    // booksをjsonで取得
     public function getData() {
         $books = Book::orderBy('created_at', 'DESC')->get();
         $json = ["books" => $books];

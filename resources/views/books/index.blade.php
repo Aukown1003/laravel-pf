@@ -70,6 +70,10 @@
 </div>
 @endsection
 
+@section('js')
+<script src="{{ asset('js/books.js') }}"></script>
+@endsection
+
 @section('script')
 <script>
   function delete_alert(e) {
